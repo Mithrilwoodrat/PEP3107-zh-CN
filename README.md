@@ -92,18 +92,18 @@ def sum() -> expression:
 
 函数的语法定义现在变成了：
 
-```Python
-decorator: \'@\' dotted_name [ \'(\' [arglist] \')\' ] NEWLINE
+```
+decorator: '@' dotted_name [ '(' [arglist] ')' ] NEWLINE
 decorators: decorator+
-funcdef: [decorators] \'def\' NAME parameters [\'->\' test] \':\' suite
-parameters: \'(\' [typedargslist] \')\'
-typedargslist: ((tfpdef [\'=\' test] \',\')*
-                (\'*\' [tname] (\',\' tname [\'=\' test])* [\',\' \'**\' tname]
-                 | \'**\' tname)
-                | tfpdef [\'=\' test] (\',\' tfpdef [\'=\' test])* [\',\'])
-tname: NAME [\':\' test]
-tfpdef: tname | \'(\' tfplist \')\'
-tfplist: tfpdef (\',\' tfpdef)* [\',\']
+funcdef: [decorators] 'def' NAME parameters ['->' test] ':' suite
+parameters: '(' [typedargslist] ')'
+typedargslist: ((tfpdef ['=' test] ',')*
+                ('*' [tname] (',' tname ['=' test])* [',' '**' tname]
+                 | '**' tname)
+                | tfpdef ['=' test] (',' tfpdef ['=' test])* [','])
+tname: NAME [':' test]
+tfpdef: tname | '(' tfplist ')'
+tfplist: tfpdef (',' tfpdef)* [',']
 ```
 
 <a name="Lambda">
@@ -130,10 +130,10 @@ def foo(a: \'x\', b: 5 + 6, c: list) -> max(2, 9):
 返回结果func_annotations的键值对为：
 
 ```Python
-{\'a\': \'x\',
- \'b\': 11,
- \'c\': list,
- \'return\': 9}
+{'a': 'x',
+ 'b': 11,
+ 'c': list,
+ 'return': 9}
 ```
 
 选择`"return"`键因为它不会和参数名冲突，尝试使用`"return"`作为参数名会导致语法错误。
